@@ -1,5 +1,5 @@
 
-import { LoginSchema, RegisterSchema, VideoSchema } from "../utils/validation.js"
+import { LoginSchema, RegisterSchema, ImageSchema } from "../utils/validation.js"
 
 export default (req, res, next) => {
   try {

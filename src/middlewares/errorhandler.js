@@ -1,6 +1,15 @@
+import { env } from '../config.js'
 export default (err, req, res, next) => {
   if (err.status != 500) {
-   return res.status(400).json({ status: 400,name:err.name, message: err.message })
+    return res.status(400).json(err)
   }
-  res.status(500).json({ status: 500, message: err.name })
+
+  if (env === "development") {
+    res.status(500).json(err)
+  }
+
+  err.message = "InternalServerError";
+  return res.status(500).json(err)
+
+
 }

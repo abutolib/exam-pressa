@@ -1,0 +1,70 @@
+[
+    {
+        "postId": 1,
+        "post_title": "Alisher Isaevdan biznes va IT bo’yicha master klass",
+        "post_body": "Najot Ta'lim jamoasi o'z o'quvchilari uchun manfaatli bo'lgan musobaqalarni tashkil etishda davom etadi. Biz bu gal markazimizdagi uch soha vakillari, ya'ni UX/UI dizayner, frontend va backend dasturchilarni 'bir dasturxon atrofida' to'plashga qaror qildik.",
+        "start_date": "22-01-2022",
+        "start_time": "15:00",
+        "post_image": "nodejs.jpg",
+        "type": "online",
+        "link": "https://www.youtube.com/liver24",
+        "organizerId": 1,
+        "views": 15,
+        "status": "active"
+    },
+    {
+        "postId": 2,
+        "post_title": "Jahongir G’ulamovdan dizayn sohasi bo’yicha master klass",
+        "post_body": "Najot Ta'lim jamoasi o'z o'quvchilari uchun manfaatli bo'lgan musobaqalarni tashkil etishda davom etadi. Biz bu gal markazimizdagi uch soha vakillari, ya'ni UX/UI dizayner, frontend va backend dasturchilarni 'bir dasturxon atrofida' to'plashga qaror qildik.",
+        "start_date": "22-01-2022",
+        "start_time": "15:00",
+        "post_image": "nodejs.jpg",
+        "type": "online",
+        "link": "https://www.youtube.com/liver24",
+        "organizerId": 2,
+        "views": 6,
+        "status": "noactive"
+    },
+    {
+        "postId": 3,
+        "post_title": "Yuksalish loyihasi AQSHda ovozli suhbat",
+        "post_body": "Najot Ta'lim jamoasi o'z o'quvchilari uchun manfaatli bo'lgan musobaqalarni tashkil etishda davom etadi. Biz bu gal markazimizdagi uch soha vakillari, ya'ni UX/UI dizayner, frontend va backend dasturchilarni 'bir dasturxon atrofida' to'plashga qaror qildik.",
+        "start_date": "22-01-2022",
+        "start_time": "15:00",
+        "post_image": "nodejs.jpg",
+        "type": "online",
+        "link": "https://www.youtube.com/liver24",
+        "organizerId": 3,
+        "views": 5,
+        "status": "active"
+    },
+    {
+        "postId": 4,
+        "start_date": "22/02/2022",
+        "start_time": "10:00",
+        "categoryId": "1",
+        "subcategoryId": "6",
+        "type": "online",
+        "link": "https://www.youtube.com/liver24"
+    },
+    {
+        "postId": 5,
+        "start_date": "22/02/2022",
+        "start_time": "10:00",
+        "categoryId": "1",
+        "subcategoryId": "6",
+        "type": "online",
+        "link": "https://www.youtube.com/liver24",
+        "post_image": "168551209328520220727_182715.jpg"
+    },
+    {
+        "postId": 6,
+        "start_date": "22/02/2022",
+        "start_time": "10:00",
+        "categoryId": "1",
+        "subcategoryId": "6",
+        "type": "online",
+        "link": "https://www.youtube.com/liver24",
+        "post_image": "168551237641420220727_182715.jpg"
+    }
+]

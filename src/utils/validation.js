@@ -9,8 +9,8 @@ export const RegisterSchema = Joi.object({
   password: Joi.string().min(8).max(100).required(),
   avatar:Joi.string().pattern(new RegExp('((jpe?g|png|gif|bmp))$')).required()
 })
-export const VideoSchema = Joi.object({ 
+export const ImageSchema = Joi.object({ 
   title: Joi.string().max(32),
-  video: Joi.string().pattern(new RegExp('((mp4|mpg|mov|avi))$')).required(),
-  size:Joi.number().max(50 *1024 *1024)
+  image: Joi.string().pattern(new RegExp('((jpe?g|png|gif|bmp))$')).required(),
+  size:Joi.number().max(2*1024 *1024)
 })
