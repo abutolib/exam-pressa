@@ -6,8 +6,8 @@ export default (req,res,next) => {
     if(!token){
       throw new Error('token required')
     }   
-    const {userId} = jwt.verify(token)
-    req.userId = userId
+    const {adminId} = jwt.verify(token)
+    req.adminId = adminId
     next()
   } catch (error) {
     return next(error)

@@ -5,5 +5,6 @@ import checkToken from '../middlewares/checkToken.js'
 const router = Router()
 
 router.post('/admin',adminController.LOGIN)
+router.put('/admin/posts',checkToken,adminController.PUT)
 
 export default router

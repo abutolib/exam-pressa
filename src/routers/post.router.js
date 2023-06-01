@@ -6,6 +6,7 @@ const router = Router()
 
 router.get('/posts',postController.GET)
 router.get('/posts/:postId',postController.GET_BY_ID)
-router.post('/posts',postController.POST)
+router.post('/posts',validate,postController.POST)
+//router.post('/posts',postController.POST)
 
 export default router

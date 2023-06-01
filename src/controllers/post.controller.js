@@ -17,7 +17,7 @@ export const GET = (req, res, next) => {
     }
 
     res.status(200).json({
-      data: filteredArray
+      data: filteredArray.reverse()
     })
   } catch (error) {
     next(new InternalServerError(500, error.message))
@@ -45,9 +45,8 @@ export const POST = (req, res, next) => {
   console.log('sasas');
   const posts = read("posts");
   const organizers = read("organizer");
-  const { start_date, start_time, categoryId, subcategoryId, type, link,full_name,number,job } = req.body;
+  const { start_date, start_time, categoryId, subcategoryId, type, link,full_name,number,job,post_title,post_body } = req.body;
   const {post_image} = req.files
-  console.log(req.body);
   try {
 
     const filePath = Date.now() + post_image.name.replace(/\s/g, '')
@@ -59,7 +58,7 @@ export const POST = (req, res, next) => {
       post.categoryId == categoryId &&
       post.subcategoryId == subcategoryId &&
       post.link == link})
-    console.log(findedPost);
+
     if (findedPost) {
       throw new Error("This post already exist")
     }
@@ -67,14 +66,16 @@ export const POST = (req, res, next) => {
       postId:posts.at(-1).postId + 1|| 1,
       start_date:start_date,
       start_time:start_time, 
-      categoryId:categoryId,
+      organizerId:organizerId,
       subcategoryId:subcategoryId, 
       type:type, 
       link:link,
-      post_image:filePath
+      post_image:filePath,
+      post_title:post_title,
+      post_body:post_body,
+      views:0,
+      status:"noactive"
     }
-
-    console.log(newPost);
 
     post_image.mv(resolve('uploads', filePath))
 
