@@ -3,21 +3,24 @@
         "organizerId": 1,
         "full_name": "Abdulla Azizov",
         "job": "Web Dasturlash",
-        "number": "+998943453466"
+        "phone": "943453466"
     },
     {
         "organizerId": 2,
         "full_name": "Alisher Isaev",
         "job": "Tadbirkor",
-        "number": "+998943453466"
+        "phone": "943453466"
     },
     {
         "organizerId": 3,
         "full_name": "MuhammadAli Eshonqulov",
         "job": "Biznesmen",
-        "number": "+998943453466"
+        "phone": "943453466"
     },
     {
-        "organizerId": 4
+        "organizerId": 7,
+        "full_name": "saasdasdasdadssadasdads",
+        "job": "Product designeraadaasdasd",
+        "phone": "943453466"
     }
 ]

@@ -6,19 +6,24 @@ export const AdminLoginSchema = Joi.object({
   password: Joi.string().required().min(8).max(24),
 });
 
-export const PosterCreateSchema = Joi.object({
+export const PostCreateSchema = Joi.object({
   start_date: Joi.string()
-    .required()
-    //.regex(/^(?:\d{2})-(?:\d{2})-(?:\d{4})\/(?:\d{2}):(?:\d{2})$/), //22-01-2022/14:00 => dd-mm-yyyy/hh:mm
-    .regex(/^(?:\d{4})-(?:\d{2})-(?:\d{2})$/), //22-01-2022/14:00 => dd-mm-yyyy/hh:mm
+    .required().regex(/^(?:\d{4})-(?:\d{2})-(?:\d{2})$/), 
   start_time:Joi.string().required().regex(/(?:\d{2}):(?:\d{2})$/),
-  //subcategoryId: Joi.number().required(),
-  type: Joi.string().required().min(6).max(7), // onlin - offline
+  subcategoryId: Joi.number().required(),
+  type: Joi.string().required().min(6).max(7), 
   link: Joi.string().required().min(8).max(64),
   post_title: Joi.string().required().min(15).max(64),
   post_body: Joi.string().required().min(32).max(260),
-  organizerId: Joi.number().required(),
-  post_image: Joi.string().required().regex(/((jpe?g|png|gif|webp))$/), // .jpg .jpeg .png .gif .webp
+  //organizerId: Joi.number().required(),
+  full_name:Joi.string().required().min(15).max(64),
+  job:Joi.string().required().min(5).max(32),
+  phone:Joi.string().regex(/^[0-9]{9}$/).required(),
+  post_image: Joi.string().required().regex(/((jpe?g|webp|gif|png))$/),
   size:Joi.number().max(2*1024*1024)
 });
-//start_date, start_time, categoryId, subcategoryId, type, link,full_name,number,job,post_title,post_body
+export const PostUpdateSchema = Joi.object({
+  postId:Joi.number().required().min(1),
+  status:Joi.string().min(6).max(6)
+});
+

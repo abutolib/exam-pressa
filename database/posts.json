@@ -1,27 +1,30 @@
 [
     {
         "postId": 1,
-        "post_title": "Alisher Isaevdan biznes va IT bo’yicha master klass",
-        "post_body": "Najot Ta'lim jamoasi o'z o'quvchilari uchun manfaatli bo'lgan musobaqalarni",
-        "start_date": "22-01-2022",
-        "start_time": "15:00",
-        "post_image": "nodejs.jpg",
-        "type": "online",
+        "start_date": "2022-10-10",
+        "start_time": "14:00",
+        "organizerId": "3",
+        "subcategoryId": "5",
+        "type": "offline",
         "link": "https://www.youtube.com/liver24",
-        "organizerId": 1,
-        "views": 15,
+        "post_image": "1685587428724sky.png",
+        "post_title": "Alisher Isaevdan biznes va IT bo’yicha master klass",
+        "post_body": "Najot Ta'lim jamoasi o'z o'quvchilari uchun manfaatli bo'lgan musobaqalarni tashkil etishda davom etadi. Biz bu gal markazimizdagi uch soha vakillari, ya'ni UX/UI dizayner, frontend va backend dasturchilarni bir dasturxon atrofida to'plashga qaror qildik.",
+        "views": 8,
         "status": "active"
     },
     {
-        "postId": 13,
-        "post_title": "asdasdsadsdsadasdsadasdasdsadijqwidjqiwdjiqwjdijqwid",
-        "post_body": "qwiueqiueqhwdnsandiwduiashdushuihdasuihdausihdaushdaushd",
+        "postId": 2,
         "start_date": "2022-10-10",
-        "start_time": "50:00",
-        "post_image": "1685584445594sky.png",
+        "start_time": "10:00",
+        "subcategoryId": "5",
         "type": "offline",
         "link": "https://www.youtube.com/liver24",
+        "post_image": "1685591788967sky.png",
+        "post_title": "asdasdsadsdsadasdsadasdasdsadijqwidjqiwdjiqwjdijqwid",
+        "post_body": "qwiueqiueqhwdnsandiwduiashdushuihdasuihdausihdaushdaushd",
         "views": 0,
-        "status": "active"
+        "status": "noactive",
+        "organizerId": 7
     }
 ]

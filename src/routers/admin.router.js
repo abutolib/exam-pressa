@@ -4,7 +4,7 @@ import validate from '../middlewares/validate.js'
 import checkToken from '../middlewares/checkToken.js'
 const router = Router()
 
-router.post('/admin',adminController.LOGIN)
-router.put('/admin/posts',checkToken,adminController.PUT)
+router.post('/admin',validate,adminController.LOGIN)
+router.put('/admin/posts',validate,checkToken,adminController.PUT)
 
 export default router

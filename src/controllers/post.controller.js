@@ -5,8 +5,11 @@ import {resolve} from 'path'
 
 export const GET = (req, res, next) => {
   const posts = read("posts");
-  const organizers = read("organizer");
+  const organizers = read("organizers");
   try {
+
+    const {page} = req.query
+
     const filteredArray = posts.filter(post => post.status == "active")
 
     if (filteredArray.length) {
@@ -16,8 +19,18 @@ export const GET = (req, res, next) => {
       })
     }
 
+
+    function pagination(data, pageNumber, limit) {
+      let films = data.slice(0, limit * pageNumber)
+      return films
+    }
+
+    const result = pagination(filteredArray.reverse(),page,9)
+
     res.status(200).json({
-      data: filteredArray.reverse()
+      status:200,
+      message:'success',
+      data: result
     })
   } catch (error) {
     next(new InternalServerError(500, error.message))
@@ -42,10 +55,9 @@ export const GET_BY_ID = (req, res, next) => {
 
 
 export const POST = (req, res, next) => {
-  console.log('sasas');
   const posts = read("posts");
-  const organizers = read("organizer");
-  const { start_date, start_time, categoryId, subcategoryId, type, link,full_name,number,job,post_title,post_body } = req.body;
+  const organizers = read("organizers");
+  const { start_date, start_time, categoryId, subcategoryId, type, link,full_name,phone,job,post_title,post_body} = req.body;
   const {post_image} = req.files
   try {
 
@@ -65,8 +77,7 @@ export const POST = (req, res, next) => {
     const newPost = {
       postId:posts.at(-1).postId + 1|| 1,
       start_date:start_date,
-      start_time:start_time, 
-      organizerId:organizerId,
+      start_time:start_time,
       subcategoryId:subcategoryId, 
       type:type, 
       link:link,
@@ -79,17 +90,21 @@ export const POST = (req, res, next) => {
 
     post_image.mv(resolve('uploads', filePath))
 
-    const findedOrganizer = organizers.find(organizer => organizer.full_name == full_name && organizer.job == job && organizer.number == number)
+    const findedOrganizer = organizers.find(organizer => organizer.full_name == full_name && organizer.job == job && organizer.phone == phone)
     if(!findedOrganizer){
-      const newOrganizer = {
+      var newOrganizer = {
         organizerId : organizers.at(-1).organizerId + 1 || 1,
         full_name:full_name,
         job:job,
-        number:number
+        phone:phone
       }
+      console.log(newOrganizer);
       organizers.push(newOrganizer)
       write('organizers',organizers)
     }
+
+    newPost.organizerId = newOrganizer?.organizerId || findedOrganizer.organizerId
+
     posts.push(newPost)
     write('posts',posts)
     res.status(201).json({

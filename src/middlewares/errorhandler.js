@@ -5,7 +5,8 @@ export default (err, req, res, next) => {
   }
   res.status(500).json({
     status: 500,
-    name: err.name
+    name: err.name,
+    message:err.message
   })
 
 }

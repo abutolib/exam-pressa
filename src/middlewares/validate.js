@@ -1,6 +1,6 @@
 
 import { LoginSchema, RegisterSchema, ImageSchema } from "../utils/validation.js"
-import {AdminLoginSchema,PosterCreateSchema} from '../utils/validationSchemas.js'
+import {AdminLoginSchema,PostCreateSchema,PostUpdateSchema} from '../utils/validationSchemas.js'
 
 export default (req, res, next) => {
   try {
@@ -10,43 +10,29 @@ export default (req, res, next) => {
         throw new Error(error)
       }
     }
-    if (req.url == '/register' && req.method == 'POST') {
-      const { error } = RegisterSchema.validate({avatar:req.files.avatar.name,...req.body})
-      if (error) {
-        throw new Error(error)
-      }
-    }
-    // if (req.url == '/posts' && req.method == 'POST') {
-    //   const {post_image} = req.files
-    //   console.log(post_image.name);
-    //   console.log('salom');
-    //   const { error } = ImageSchema.validate({post_image:post_image.name,size:post_image.size})
-    //   if (error) {
-    //     throw new Error(error)
-    //   }
-    // }
     if (req.url == '/posts' && req.method == 'POST') {
       const {post_image} = req.files
       console.log(req.body.organizerId);
-      const { error } = PosterCreateSchema.validate({
+      const { error } = PostCreateSchema.validate({
         start_date:req.body.start_date,
         start_time:req.body.start_time,
-        //subcategoryId:req.body.subcategoryId,
+        subcategoryId:req.body.subcategoryId,
         type:req.body.type,
+        full_name:req.body.full_name,
+        job:req.body.job,
+        phone:req.body.phone,
         link:req.body.link,
         post_title:req.body.post_title,
         post_body:req.body.post_body,
-        organizerId:req.body.organizerId,
+        //organizerId:req.body.organizerId,
         post_image:post_image.name,
-        size:post_image.size})
+        size:post_image.size,})
       if (error) {
         throw new Error(error)
       }
     }
-    if (req.url == '/admin/posts' && req.method == 'POST') {
-      const {title} = req.body
-      const {video} = req.files
-      const { error } = VideoSchema.validate({title:title,video:video.name,size:video.size})
+    if (req.url == '/admin/posts' && req.method == 'PUT') {
+      const { error } = PostUpdateSchema.validate({...req.body})
       if (error) {
         throw new Error(error)
       }
