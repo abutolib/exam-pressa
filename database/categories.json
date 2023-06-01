@@ -1,18 +1,18 @@
 [
   {
     "categoryId": 1,
-    "category_name": "Information Texnologies"
+    "categorName": "Information Texnologies"
   },
   {
     "categoryId": 2,
-    "category_name": "Dizayn"
+    "categorName": "Dizayn"
   },
   {
     "categoryId": 3,
-    "category_name": "Biznes"
+    "categorName": "Biznes"
   },
   {
     "categoryId": 4,
-    "category_name": "Ta’lim"
+    "categorName": "Ta’lim"
   }
 ]
