@@ -1,0 +1,59 @@
+/admin:
+  post:
+    tags:
+      - admin
+    requestBody:
+      content: 
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Login'
+    responses:
+      '200':
+        description: login admin
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Response'
+      '400':
+        description: error message  
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ErrorResponse'
+
+/admin/posts:
+  put:
+    tags: 
+      - admin
+    security:
+      - Bearer: []
+    requestBody:
+        description: active || noactive || reject
+        content: 
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChangeStatusPosts'
+    parameters:
+        - name: postId
+          in: query
+          description: Status values that need to be considered for filter
+          required: true
+          explode: true
+          schema:
+            type: integer
+            format: int64
+    
+
+    responses:
+      '200':
+        description: post Post
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostResponse'
+      '400':
+        description: error message  
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ErrorResponse'          

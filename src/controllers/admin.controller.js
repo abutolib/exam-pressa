@@ -29,7 +29,8 @@ export const LOGIN = (req, res, next) => {
 export const PUT = (req, res, next) => {
   const posts = read("posts");
   const organizers = read("organizers");
-  let { postId,status } = req.body;
+  let { status } = req.body;
+  let { postId } = req.query;
   try {
 
     const post = posts.find(

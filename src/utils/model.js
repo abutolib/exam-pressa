@@ -18,4 +18,15 @@ const write = (filename, data) => {
 const hashPassword = (password) =>
 	createHash("sha256").update(password).digest("hex");
 
-export { read, write, hashPassword };
+const queryAdd = (obj, data) => {
+	return data.filter(element => {
+		let isValid = true;
+		for (let key in obj) {
+			isValid = isValid && obj[key] == element[key];
+		}
+		return isValid;
+	})
+}
+
+
+export { read, write, hashPassword, queryAdd };

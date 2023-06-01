@@ -1,6 +1,5 @@
 
-import { LoginSchema, RegisterSchema, ImageSchema } from "../utils/validation.js"
-import {AdminLoginSchema,PostCreateSchema,PostUpdateSchema} from '../utils/validationSchemas.js'
+import {AdminLoginSchema,PostCreateSchema,PostUpdateSchema} from '../utils/validation.js'
 
 export default (req, res, next) => {
   try {
@@ -24,7 +23,6 @@ export default (req, res, next) => {
         link:req.body.link,
         post_title:req.body.post_title,
         post_body:req.body.post_body,
-        //organizerId:req.body.organizerId,
         post_image:post_image.name,
         size:post_image.size,})
       if (error) {

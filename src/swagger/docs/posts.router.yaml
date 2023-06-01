@@ -1,0 +1,133 @@
+/posts:
+  get:
+      tags:
+        - posts
+      summary: Finds posts by pages
+      description: Multiple status values can be provided with comma separated strings
+      operationId: findPostsByPage
+      parameters:
+        - name: page
+          in: query
+          description: page query
+          required: true
+          explode: true
+          schema:
+            type: integer
+            default: 1
+            format: int32
+        - name: start_date
+          in: query
+          description: start_date query
+          required: false
+          explode: true
+          schema:
+            type: string
+        - name: type
+          in: query
+          description: type query
+          required: false
+          explode: true
+          schema:
+            type: string
+        - name: subcategoryId
+          in: query
+          description: subcategoryId query
+          required: false
+          explode: true
+          schema:
+            type: string
+        - name: organizerId
+          in: query
+          description: organizerId query
+          required: false
+          explode: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PostsResponse'          
+        '400':
+          description: error message  
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - petstore_auth:
+            - write:pets
+            - read:pets
+
+  post:
+    tags:
+      - posts
+    requestBody:
+      content: 
+        multipart/form-data:
+          schema:
+            $ref: '#/components/schemas/Posts'
+    summary: Post post
+    # consumes:
+    #     - multipart/form-data
+    # parameters:
+    #     - in: formData
+    #       name: post_image
+    #       type: file
+    #       description: The file to upload.
+    responses:
+      '200':
+        description: post Post
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostResponse'
+      '400':
+        description: error message  
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ErrorResponse'
+
+/posts/{postId}:
+    get:
+      tags:
+        - posts
+      summary: Find post by ID
+      description: Returns a single post
+      operationId: getPetById
+      parameters:
+        - name: postId
+          in: path
+          description: ID of post to return
+          required: true  
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostResponse'          
+        '400':
+          description: error message  
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Posts not found
+      security:
+        - api_key: []
+        - petstore_auth:
+            - write:pets
+            - read:pets
+
+
+   

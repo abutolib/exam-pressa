@@ -5,9 +5,11 @@ import { PORT } from './config.js'
 import cors from 'cors'
 import errorhandler from './middlewares/errorhandler.js'
 import fileUpload from 'express-fileupload'
+import { accessLogStream } from './config.js'
+
 import adminRouter from './routers/admin.router.js'
 import postRouter from './routers/post.router.js'
-import { accessLogStream } from './config.js'
+import swaggerRouter from './swagger.js'
 
 const app = express()
 
@@ -18,6 +20,7 @@ app.use(fileUpload())
 
 app.use(morgan('combined',{skip: function (req, res) { return res.statusCode < 400 }, stream: accessLogStream }))
 
+app.use('/api-docs',swaggerRouter)
 app.use(adminRouter)
 app.use(postRouter)
 

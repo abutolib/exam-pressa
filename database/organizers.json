@@ -22,5 +22,29 @@
         "full_name": "saasdasdasdadssadasdads",
         "job": "Product designeraadaasdasd",
         "phone": "943453466"
+    },
+    {
+        "organizerId": 8,
+        "full_name": "saasdasdasdadssadasdadsasdasdasd",
+        "job": "Product designeraadaasdasd",
+        "phone": "943453466"
+    },
+    {
+        "organizerId": 9,
+        "full_name": "Fayzullayev Abutolib",
+        "job": "Product abutlib",
+        "phone": "943453466"
+    },
+    {
+        "organizerId": 10,
+        "full_name": "Fayzullayev Abutolib",
+        "job": "asdasdasd",
+        "phone": "901234567"
+    },
+    {
+        "organizerId": 11,
+        "full_name": "Fayzullayev Islombek",
+        "job": "asdasdasdsadas",
+        "phone": "943453466"
     }
 ]

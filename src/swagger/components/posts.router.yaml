@@ -1,0 +1,95 @@
+components:
+  schemas:    
+    PostResponse: 
+      type: object
+      properties:
+        status: 
+          type: integer
+        message: 
+          type: string
+        data: 
+          type: array
+          items:
+            type: object
+            properties:
+              postId:
+                type: integer
+              start_date: 
+                type: string
+              start_time: 
+                type: string
+              type: 
+                type: string
+              link: 
+                type: string
+              post_image:
+                type: string
+              post_title:
+                type: string
+              post_body:
+                type: string
+              views:
+                type: integer
+              status:
+                type: string
+              category:
+                type: object
+                properties:
+                  categoryId: 
+                    type: integer
+                  categoryName: 
+                    type: string
+              organizer:
+                type: object
+                properties:
+                  organizerId: 
+                    type: integer
+                  full_name: 
+                    type: string
+                  job:
+                    type: string
+                  phone: 
+                    type: string
+              subcategory:
+                type: object    
+                properties:
+                  categoryId: 
+                    type: integer
+                  subcategoryId: 
+                    type: integer
+                  subcategoryName:
+                    type: string
+    
+    Posts:
+      type: object
+      properties:
+        start_date:
+          type: string
+          required: true
+        start_time: 
+          type: string
+        categoryId: 
+          type: integer  
+        subcategoryId: 
+          type: integer  
+        type: 
+          type: string
+        link: 
+          type: string
+        full_name: 
+          type: string
+        job: 
+          type: string
+        phone: 
+          type: string
+        post_title:
+          type: string
+        post_body:
+          type: string
+        post_image:
+          type: string
+          format: binary
+    
+
+
+    

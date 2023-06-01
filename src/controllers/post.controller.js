@@ -1,4 +1,4 @@
-import { read, write } from "../utils/model.js";
+import { queryAdd, read, write } from "../utils/model.js";
 import jwt from "../utils/jwt.js";
 import { BadRequestError, InternalServerError } from "../utils/errors.js";
 import { resolve } from 'path'
@@ -14,25 +14,31 @@ export const GET = (req, res, next) => {
 
     const filteredArray = posts.filter(post => post.status == "active")
 
+
     if (filteredArray.length) {
       filteredArray.map(post => {
         post.organizer = organizers.find(organizer => organizer.organizerId = post.organizerId)
         post.subcategory = subcategories.find(subcategory => subcategory.subcategoryId = post.subcategoryId)
         post.category = categories.find(category => category.categoryId = post.categoryId)
 
-        delete post.organizerId;
-        delete post.subcategoryId;
+        //delete post.organizerId;
+        //delete post.subcategoryId;
         delete post.categoryId;
       })
     }
 
 
     function pagination(data, pageNumber, limit) {
-      let films = data.slice(0, limit * pageNumber)
+      let films = data.slice((pageNumber - 1) * limit, limit * pageNumber)
       return films
     }
+    let result = pagination(filteredArray.reverse(), page, 9)
+    console.log(result);
 
-    const result = pagination(filteredArray.reverse(), page, 9)
+    delete req.query.page
+    delete req.query.limit
+
+    result = queryAdd(req.query, result)
 
     res.status(200).json({
       status: 200,
@@ -43,6 +49,7 @@ export const GET = (req, res, next) => {
     next(new InternalServerError(500, error.message))
   }
 };
+
 export const GET_BY_ID = (req, res, next) => {
   try {
     const { postId } = req.params
@@ -64,8 +71,6 @@ export const GET_BY_ID = (req, res, next) => {
     next(new InternalServerError(500, error.message))
   }
 };
-
-
 
 export const POST = (req, res, next) => {
   const posts = read("posts");
@@ -115,13 +120,15 @@ export const POST = (req, res, next) => {
 
     newPost.organizerId = newOrganizer?.organizerId || findedOrganizer.organizerId
 
+
+
     posts.push(newPost)
     write('posts', posts)
 
 
-    newPost.category = categories.find(category => category.categoryId = newPost.categoryId)
-    newPost.organizer = organizers.find(organizer => organizer.organizerId = newPost.organizerId)
-    newPost.subcategory = subcategories.find(subcategory => subcategory.subcategoryId = newPost.subcategoryId)
+    newPost.category = categories.find(category => category.categoryId == newPost.categoryId)
+    newPost.organizer = organizers.find(organizer =>organizer.organizerId == newPost.organizerId)
+    newPost.subcategory = subcategories.find(subcategory => subcategory.subcategoryId == newPost.subcategoryId)
 
     delete newPost.categoryId;
     delete newPost.organizerId;
@@ -140,5 +147,9 @@ export const POST = (req, res, next) => {
 export default {
   GET,
   GET_BY_ID,
+  //GET_BY_DATE,
+  // GET_BY_SUBCATEGORY,
+  // GET_BY_TYPE,
+  // GET_BY_FULL_NAME,
   POST
 }
